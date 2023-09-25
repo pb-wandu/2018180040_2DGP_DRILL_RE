@@ -15,7 +15,7 @@ MOVEAMOUNT = 12 # 이동 거리
 
 MOVING, CROUCHING, JUMPING, NOTHING = 2, 1, 0, -1 # 프레임 종류 (위치에 따름)
 
-nowplayingtype = "NOTHING" # 현재 동작 종류
+nowplayingtype = NOTHING # 현재 동작 종류
 nowframe = 0 # 현재 프레임 x위치 번호
 
 # 화면을 연다
