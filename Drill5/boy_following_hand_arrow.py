@@ -42,7 +42,7 @@ def boy_animation_draw():
     global nowplayerx, nowplayery # 현재 소년 위치
     global nowlookingdir, nowplayerstate # 현재 바라보는 방향, 플레이어 상태
 
-    frameline = 0 # Animation Sheet에서 표시할 프레임 선
+    frameline = 0 # Animation Sheet에서 표시할 프레임 (y방향 기준 순서)
     if nowplayerstate == "standing":
         frameline = 3
     elif nowplayerstate == "running":
