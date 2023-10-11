@@ -188,11 +188,16 @@ class StateMachine:
         self.cur_state = Sleep
 
         # 각 상태에서의 동작 전환
+        ### 과제 수정된 버전 (Autorun에서 방향키 눌리면 Run으로 돌아감)
+        ### 또한 Run 상태의 keydown, Idle과 Sleep 상태의 keyup은 쓰이지 않는 동작이므로 생략
+        ### - Idle이나 Sleep, Autorun 상태에서 keydown을 하면 Run으로 넘어가버리며,
+        ### - Run에서는 이미 keydown이 되어 있는 상태이다.
+
         self.transitions = {
-            Idle: {right_down: Run, left_down: Run, left_up: Run, right_up: Run, time_out: Sleep, a_down: Autorun},
-            Run: {right_down: Idle, left_down: Idle, right_up: Idle, left_up: Idle},
-            Sleep: {right_down: Run, left_down: Run, right_up: Run, left_up: Run, space_down: Idle},
-            Autorun: {time_out: Idle}
+            Idle: {right_down: Run, left_down: Run, time_out: Sleep, a_down: Autorun},
+            Run: {right_up: Idle, left_up: Idle},
+            Sleep: {right_down: Run, left_down: Run, space_down: Idle},
+            Autorun: {right_down: Run, left_down: Run, time_out: Idle}
         }
 
     def start(self):
